@@ -35,7 +35,7 @@ class Vehicle(models.Model):
  
     def is_rented(self):
         try:
-            if self.rental_set.last().return_date.replace(tzinfo=None) < datetime.datetime.now():
+            if self.rental_set.order_by('return_date').last().return_date.replace(tzinfo=None) < datetime.datetime.now():
               return True    
             else:
               return False

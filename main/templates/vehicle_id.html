@@ -4,7 +4,10 @@
 <h1>Vehicle ID {{vehicle.id}}</h1>
 
 <p>{{vehicle.vehicle_size.name}} {{vehicle.vehicle_type.name}}</p>
-<p>{{vehicle.rental_set.last.return_date}}</p>
+{% for veh in vehicle.rental_set.all%}
+<p> {{veh.return_date}}</p>
+{%endfor%}
+
 <!-- <p>{{vehicle.is_rented}}</p> -->
  {% if vehicle.is_rented %}
 <p>YOU CAN RENT ME</p>
