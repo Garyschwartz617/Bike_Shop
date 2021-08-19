@@ -1,0 +1,14 @@
+{% extends 'base.html'%}
+
+{% block content%}
+<h1>Vehicle ID {{vehicle.id}}</h1>
+
+<p>{{vehicle.vehicle_size.name}} {{vehicle.vehicle_type.name}}</p>
+<p>{{vehicle.rental_set.last.return_date}}</p>
+<!-- <p>{{vehicle.is_rented}}</p> -->
+ {% if vehicle.is_rented %}
+<p>YOU CAN RENT ME</p>
+{%else%}
+<p>YOU MAY NOT RENT ME</p> 
+{% endif %}
+{% endblock %}

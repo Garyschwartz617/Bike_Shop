@@ -1,0 +1,9 @@
+{% extends 'base.html'%}
+
+{% block content%}
+<h1>all vehicles</h1>
+{% for vehicle in vehicles%}
+<p>Name: <a href="{% url 'vehicle_id' vehicle.id %}">{{vehicle}} </a></p>
+
+{% endfor %}
+{% endblock %}

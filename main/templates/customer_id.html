@@ -1,0 +1,15 @@
+{% extends 'base.html'%}
+
+{% block content%}
+<h1>Customer id: {{customer.id}}</h1>
+
+<p>Name: {{customer.first_name}} {{customer.last_name}}</p>
+<p>Address: {{customer.address}} {{customer.city}} {{customer.country}}</p>
+{% for rental in customer.rental_set.all%}
+<p><a href="{% url 'rental_id' rental.id%}">{{rental}}</a></p>
+
+{% endfor %} 
+
+
+
+{% endblock %}

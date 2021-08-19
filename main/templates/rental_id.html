@@ -1,0 +1,19 @@
+{% extends 'base.html'%}
+
+{% block content%}
+<h1>Rental {{rental.id}}</h1>
+
+<!-- <p>Name: {{rental.customer.first_name}} {{rental.customer.last_name}}</p> -->
+<p>Name: <a href="{% url 'customer_id' rental.customer.id %}">{{rental.customer.first_name}} {{rental.customer.last_name}} </a></p>
+
+<p>Address: {{rental.customer.address}} {{rental.customer.city}} {{rental.customer.country}}</p>
+<p>Name: <a href="{% url 'vehicle_id' rental.vehicle.id %}">{{rental.vehicle}} </a></p>
+<p>Type: {{rental.vehicle.vehicle_type.name}}</p>
+<p>Size: {{rental.vehicle.vehicle_size.name}}</p>
+<p>Return date: {{rental.return_date}}</p>
+
+
+
+
+
+{% endblock %}

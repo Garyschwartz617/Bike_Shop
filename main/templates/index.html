@@ -1,0 +1,9 @@
+{% extends 'base.html'%}
+
+{% block content%}
+<h1>Hello hompage what would You like to see</h1>
+<p> <a href="{% url 'vehicle' %}">Vehicle </a></p>
+<p> <a href="{% url 'rental' %}">Rental </a></p>
+<p> <a href="{% url 'customer' %}">Customer</a></p>
+
+{% endblock %}
