@@ -79,10 +79,7 @@ def make_rental(num):
             late = t    
         Rental.objects.create(customer= y, vehicle = x, rental_date = early, return_date =late)
 
-
-
 def make_rental_rate():
-
     for i in VehicleType.objects.all():
         for y in VehicleSize.objects.all():
             z = random.randrange(5, 50)

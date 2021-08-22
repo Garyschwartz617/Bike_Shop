@@ -4,11 +4,8 @@ from .forms import *
 
 # Create your views here.
 
-
 def homepage(request):
-   
     return render(request,'index.html')
-
 
 def rental(request):
     x = Rental.objects.all().order_by('rental_date')
@@ -19,17 +16,14 @@ def rental_id(request,num):
     return render (request, 'rental_id.html', {'rental': x})
 
 def rental_add(request):
-    
     if request.method == 'GET':
-        form = RentalAdd()
-        
+        # vehicles = Vehicle.objects.all()
+        form = RentalAdd()    
+        # form.fields['vehicle'].queryset = vehicles
     elif request.method == 'POST':
         form = RentalAdd(request.POST)
         if form.is_valid():
-            
             Rental.objects.create(**form.cleaned_data) 
-
-            # return redirect('index')
     return render(request, 'rental_add.html', {'form':form})
     
 def customer(request):
@@ -41,18 +35,32 @@ def customer_id(request,num):
     return render (request, 'customer_id.html', {'customer': x})
 
 def customer_add(request):
-    
     if request.method == 'GET':
         form = CustomerAdd()
-        
     elif request.method == 'POST':
         form = CustomerAdd(request.POST)
         if form.is_valid():
-            
             Customer.objects.create(**form.cleaned_data) 
-
-            # return redirect('index')
     return render(request, 'customer_add.html', {'form':form})
+
+
+
+def add_customer(request):
+    families = Customer.objects.all()
+    if request.method == 'GET':
+        form = CustomerForm()
+    elif request.method == 'POST':
+        form = CustomerForm(request.POST)
+        if form.is_valid():
+            form.save()
+
+    return render(request, 'customer_add.html', {'families': families, 'form':form})
+
+
+
+
+
+
 
 def vehicle(request):
     x = Vehicle.objects.all().order_by('vehicle_type','vehicle_size')
@@ -62,18 +70,13 @@ def vehicle_id(request,num):
     x = Vehicle.objects.get(id = num)
     return render (request, 'vehicle_id.html', {'vehicle': x})
 
-def vehicle_add(request):
-    
+def vehicle_add(request):   
     if request.method == 'GET':
-        form = VehicleAdd()
-        
+        form = VehicleAdd()    
     elif request.method == 'POST':
         form = VehicleAdd(request.POST)
         if form.is_valid():
-            
-            Vehicle.objects.create(**form.cleaned_data) 
-
-            # return redirect('index')
+            Vehicle.objects.create(**form.cleaned_data)
     return render(request, 'vehicle_add.html', {'form':form})
 
 

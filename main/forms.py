@@ -17,6 +17,24 @@ class CustomerAdd(forms.Form):
     city = forms.CharField(max_length=80)
     country = forms.CharField(max_length=80)
 
+class CustomerForm(forms.ModelForm):
+    class Meta:
+        model = Customer
+        fields = '__all__'
+    first_name = forms.CharField(
+        widget = forms.TextInput(
+            attrs={
+                'placeholder': 'Write your first name here','title': 'Search'
+            })
+        )    
+    email = forms.CharField(
+        widget = forms.TextInput(
+            attrs={
+                'placeholder': 'Write your email here'
+            })
+        )    
+
+
 class VehicleAdd(forms.Form):
 
     vehicle_size = forms.ModelChoiceField(queryset=VehicleSize.objects.all())

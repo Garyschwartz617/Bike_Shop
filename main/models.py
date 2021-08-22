@@ -14,6 +14,11 @@ class Customer(models.Model):
         return f' {self.first_name} {self.last_name}'
 
 
+
+
+
+
+
 class VehicleType(models.Model):
     name = models.CharField(max_length=80)
     def __str__(self):
@@ -57,8 +62,8 @@ class Rental(models.Model):
     return_date = models.DateTimeField(auto_now_add=False)
     customer = models.ForeignKey(Customer, on_delete=models.PROTECT)
     vehicle = models.ForeignKey(Vehicle, on_delete=models.PROTECT)
-    def rented_vehicle():
-        return Rental.vehicle
+    def rented_vehicle(self):
+        return self.vehicle
 
 class RentalRate(models.Model):
     daily_rate = models.IntegerField()

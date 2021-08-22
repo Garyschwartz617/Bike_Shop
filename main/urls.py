@@ -1,6 +1,6 @@
 from django.urls import path
 
-from .views import homepage,rental,rental_id,rental_add,customer,customer_id,customer_add,vehicle,vehicle_id,vehicle_add
+from .views import homepage,rental,rental_id,rental_add,customer,customer_id,customer_add,vehicle,vehicle_id,vehicle_add,add_customer
  
 urlpatterns = [
     
@@ -14,6 +14,6 @@ urlpatterns = [
     path('vehicle',vehicle, name = 'vehicle'),
     path('vehicle/<int:num>',vehicle_id, name = 'vehicle_id'),
     path('vehicle/add', vehicle_add),
-
+    path('add_customer', add_customer, name='add_customer'),
 
 ]
